@@ -74,8 +74,8 @@
                            <children>
                               <VBox alignment="TOP_RIGHT" spacing="20.0">
                                  <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hue" />
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Value" />
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hue" wrappingWidth="22.5859375" />
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Saturation" />
                                  </children>
                                  <HBox.margin>

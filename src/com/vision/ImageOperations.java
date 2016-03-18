@@ -21,14 +21,14 @@ import org.opencv.imgproc.Imgproc;
 
 public class ImageOperations {
 
-	private static final double filterSize = 5;
+	private static final double filterSize = 2.5;
 
 	public static double hHigh=255;
 	public static double sHigh=255;
 	public static double vHigh=255;
-	public static double hLow=0;
+	public static double hLow=230;
 	public static double sLow=235;
-	public static double vLow=172;
+	public static double vLow=230;
 
 	public static Mat flipImageY(Mat imageToFlip){
 		Core.flip(imageToFlip, imageToFlip, 1);
@@ -110,21 +110,18 @@ public class ImageOperations {
 	            
 	            //Processing on mMOP2f1 which is in type MatOfPoint2f
 	            double approxDistance = Imgproc.arcLength(contour2f, true)*0.02;
-	            Imgproc.approxPolyDP(contour2f, approxCurve, approxDistance, true);
+	            Imgproc.approxPolyDP(contour2f, approxCurve,approxDistance, true);
 
 	            //Convert back to MatOfPoint
 	            MatOfPoint points = new MatOfPoint( approxCurve.toArray() );
 
 	            // Get bounding rect of contour
 	            Rect rect = Imgproc.boundingRect(points);
-	            
-	           
-	            float aspectRatio = (float)rect.height/(float)rect.width;
 
 				Imgproc.rectangle(original, new Point(rect.x,rect.y), new Point(rect.x+rect.width,rect.y+rect.height), new Scalar(0, 0, 255), 3);
-	            if((aspectRatio < 0.7 && aspectRatio > 0.5) && rect.width > 40 && approxCurve.toArray().length > 5 && approxCurve.toArray().length < 12){
+	            if(approxCurve.toArray().length > 5 && approxCurve.toArray().length < 11&& rect.width < 500 && rect.height/rect.width < .8 && rect.width > 50){
 	            	//draw enclosing rectangle (all same color, but you could use variable i to make them unique)
-		            System.out.println("Rectangle: "+i+" AR: "+aspectRatio+" Width: "+rect.width);
+		            System.out.println("Rectangle: "+i +" Width: "+rect.width);
 
 		            Mat sub = backupFiltered.submat(rect);
 		            if(compareWhiteToBlackPixels(sub)){
@@ -152,6 +149,6 @@ public class ImageOperations {
 		float areaToWhite = (float)(subMat.width()*subMat.height())/(float)whitePixels;
 		System.out.println("White Pixel Count in submat: "+whitePixels);
 		System.out.println("Ratio of area to white pixels: "+areaToWhite);
-		return (areaToWhite >= 2.0);
+		return (areaToWhite >= 2.5);
 	}
 }

@@ -62,8 +62,8 @@ public class ControlScreenController implements Initializable{
         hSlider.setHighValue(ImageOperations.hHigh);
         hSlider.setLowValue(ImageOperations.hLow);
 
-        vSlider.setHighValue(ImageOperations.hHigh);
-        vSlider.setLowValue(ImageOperations.hLow);
+        vSlider.setHighValue(ImageOperations.vHigh);
+        vSlider.setLowValue(ImageOperations.vLow);
 
         sSlider.setHighValue(ImageOperations.sHigh);
         sSlider.setLowValue(ImageOperations.sLow);
