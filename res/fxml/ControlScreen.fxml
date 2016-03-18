@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.RangeSlider?>
+
+<SplitPane dividerPositions="0.65" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" stylesheets="/style/ControlScreenStyle.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.ControlScreenController">
+  <items>
+      <SplitPane dividerPositions="0.005016722408026756" prefHeight="160.0" prefWidth="200.0">
+        <items>
+            <Pane>
+               <children>
+                  <ImageView fx:id="src" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+            <Pane>
+               <children>
+                  <ImageView fx:id="processed" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+        </items>
+      </SplitPane>
+      <SplitPane dividerPositions="0.2993311036789298, 0.6354515050167224" prefHeight="160.0" prefWidth="200.0">
+        <items>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <Label text="IP Camera Settings">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <HBox VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="I.P." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Port" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Update Time" />
+                           </children>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <TextField promptText="IP Address" VBox.vgrow="ALWAYS" />
+                              <TextField promptText="Port number" VBox.vgrow="ALWAYS" />
+                              <TextField promptText="Time in millis" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox>
+               <children>
+                  <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Filter Controls">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox alignment="TOP_RIGHT" spacing="20.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Value" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hue" wrappingWidth="22.5859375" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Saturation" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <RangeSlider fx:id="hSlider" highValue="100.0" lowValue="0.0" max="255.0" prefHeight="38.0" prefWidth="219.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                                    <RangeSlider fx:id="vSlider" max="255.0" prefHeight="14.0" prefWidth="187.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                                    <RangeSlider fx:id="sSlider" max="255.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+        </items>
+      </SplitPane>
+  </items>
+</SplitPane>

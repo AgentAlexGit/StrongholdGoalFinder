@@ -1,21 +1,23 @@
 package com.main;
 
 
-import com.vision.ImageOperations;
-import com.vision.dllHandler;
-import org.opencv.core.Mat;
+import com.vision.opencvLibraryHandler;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
-public class Main {
-    static double[] me = {3, 3};
-    static Mat image;
-
+public class Main extends Application{
 
     public static void main(String args[]) throws Exception {
-        dllHandler.loadOpenCVdllFile();
+        opencvLibraryHandler.loadOpenCVdllFiles();
 
-        for (int i = 1; i < 14; i++) {
-            ImageOperations.saveMat(ImageOperations.findBoundingBoxes(ImageOperations.getMatImageFromFile("/images/testImages/img" + i + ".jpg")), "filteredRects" + i);
-        }
+        launch(args);
+
 //				IPCameraManual ipcam = new IPCameraManual("169.254.158.54", IPCameraManual.HIGH_RES);
 //				NetTable net = new NetTable();
 //				net.publishTestData("hello");
@@ -28,4 +30,19 @@ public class Main {
 //				}
     }
 
-}  
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/ControlScreen.fxml"));
+
+
+        primaryStage.setScene(new Scene(root));
+
+        primaryStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+
+        primaryStage.show();
+
+    }
+}
