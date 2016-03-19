@@ -1,6 +1,9 @@
 package com.main;
 
 
+import com.vision.IPCameraManual;
+import com.vision.ImageOperations;
+import com.vision.NetTable;
 import com.vision.opencvLibraryHandler;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -10,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.opencv.core.Mat;
 
 public class Main extends Application{
 
@@ -17,17 +21,6 @@ public class Main extends Application{
         opencvLibraryHandler.loadOpenCVdllFiles();
 
         launch(args);
-
-//				IPCameraManual ipcam = new IPCameraManual("169.254.158.54", IPCameraManual.HIGH_RES);
-//				NetTable net = new NetTable();
-//				net.publishTestData("hello");
-//
-//				for(int i =0; i < 10; i++){
-//					Mat capture = ipcam.getMatSnapshotFromStream();
-//					ImageOperations.saveMat(capture, "orig");
-//					ImageOperations.saveMat(ImageOperations.filterHSV(capture));
-//					System.out.println("Capture: "+i+" complete!");
-//				}
     }
 
     @Override

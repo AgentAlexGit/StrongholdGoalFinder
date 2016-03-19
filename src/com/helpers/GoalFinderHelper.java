@@ -29,14 +29,16 @@ public class GoalFinderHelper implements Runnable {
     {
 
 
-        Mat output = ImageOperations.findBoundingBoxes(ImageOperations.getMatImageFromFile(filePath));
+        Mat output =ImageOperations.findGoalHomography(ImageOperations.getMatImageFromFile(filePath)); /*ImageOperations.filterHSV(ImageOperations.getMatImageFromFile(filePath));*/
 
-        processed.setImage(fromMattoImage(output));
+        //processed.setImage(fromMattoImage(output));
         System.out.println("Set output mat");
     }
 
 
-    private Image fromMattoImage(Mat src)
+
+
+    public Image fromMattoImage(Mat src)
     {
 
         int type = BufferedImage.TYPE_BYTE_GRAY;
